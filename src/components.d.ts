@@ -8,15 +8,15 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface SpotifyLogin {
         /**
-          * The first name
+          * Client ID for Spotify OAuth application
          */
         "clientId": string;
         /**
-          * The last name
+          * Registered redirect URI for Spotify OAuth application
          */
         "redirectUri": string;
         /**
-          * The middle name
+          * Scope for Spotify OAuth application
          */
         "scope": string;
     }
@@ -35,17 +35,23 @@ declare global {
 declare namespace LocalJSX {
     interface SpotifyLogin {
         /**
-          * The first name
+          * Client ID for Spotify OAuth application
          */
         "clientId"?: string;
+        /**
+          * Call with success
+         */
         "onCompleted"?: (event: CustomEvent<any>) => void;
+        /**
+          * Call with error
+         */
         "onFail"?: (event: CustomEvent<any>) => void;
         /**
-          * The last name
+          * Registered redirect URI for Spotify OAuth application
          */
         "redirectUri"?: string;
         /**
-          * The middle name
+          * Scope for Spotify OAuth application
          */
         "scope"?: string;
     }

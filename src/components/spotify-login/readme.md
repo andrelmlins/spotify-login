@@ -1,27 +1,24 @@
-# my-component
+# Spotify Login
 
-
+Web Component for Spotify Login
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
-| Property      | Attribute      | Description     | Type     | Default     |
-| ------------- | -------------- | --------------- | -------- | ----------- |
-| `clientId`    | `client-id`    | The first name  | `string` | `undefined` |
-| `redirectUri` | `redirect-uri` | The last name   | `string` | `undefined` |
-| `scope`       | `scope`        | The middle name | `string` | `undefined` |
-
+| Property      | Attribute      | Description                                           | Type     | Default     |
+| ------------- | -------------- | ----------------------------------------------------- | -------- | ----------- |
+| `clientId`    | `client-id`    | Client ID for Spotify OAuth application               | `string` | `undefined` |
+| `redirectUri` | `redirect-uri` | Registered redirect URI for Spotify OAuth application | `string` | `undefined` |
+| `scope`       | `scope`        | Scope for Spotify OAuth application                   | `string` | `undefined` |
 
 ## Events
 
-| Event       | Description | Type               |
-| ----------- | ----------- | ------------------ |
-| `completed` |             | `CustomEvent<any>` |
-| `fail`      |             | `CustomEvent<any>` |
+| Event       | Description       | Type               |
+| ----------- | ----------------- | ------------------ |
+| `completed` | Call with success | `CustomEvent<any>` |
+| `fail`      | Call with error   | `CustomEvent<any>` |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
