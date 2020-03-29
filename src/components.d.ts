@@ -6,56 +6,58 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
+    interface SpotifyLogin {
         /**
           * The first name
          */
-        "first": string;
+        "clientId": string;
         /**
           * The last name
          */
-        "last": string;
+        "redirectUri": string;
         /**
           * The middle name
          */
-        "middle": string;
+        "scope": string;
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLSpotifyLoginElement extends Components.SpotifyLogin, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLSpotifyLoginElement: {
+        prototype: HTMLSpotifyLoginElement;
+        new (): HTMLSpotifyLoginElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "spotify-login": HTMLSpotifyLoginElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
+    interface SpotifyLogin {
         /**
           * The first name
          */
-        "first"?: string;
+        "clientId"?: string;
+        "onCompleted"?: (event: CustomEvent<any>) => void;
+        "onFail"?: (event: CustomEvent<any>) => void;
         /**
           * The last name
          */
-        "last"?: string;
+        "redirectUri"?: string;
         /**
           * The middle name
          */
-        "middle"?: string;
+        "scope"?: string;
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "spotify-login": SpotifyLogin;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "spotify-login": LocalJSX.SpotifyLogin & JSXBase.HTMLAttributes<HTMLSpotifyLoginElement>;
         }
     }
 }

@@ -1,0 +1,98 @@
+import { Component, Prop, State, Event, EventEmitter, h } from "@stencil/core";
+
+@Component({
+  tag: "spotify-login",
+  styleUrl: "spotify-login.css",
+  shadow: true
+})
+export class SpotifyLogin {
+  /**
+   * The first name
+   */
+  @Prop() clientId: string;
+
+  /**
+   * The middle name
+   */
+  @Prop() scope: string;
+
+  /**
+   * The last name
+   */
+  @Prop() redirectUri: string;
+
+  @Event() completed: EventEmitter;
+
+  @Event() fail: EventEmitter;
+
+  @State() urlGithub: string = "https://accounts.spotify.com/authorize";
+  @State() popup: any;
+  @State() interval: number = 0;
+
+  private convertQueryParams(url) {
+    const query = url.substr(1);
+    const result = {};
+
+    query.split("&").forEach(param => {
+      const item = param.split("=");
+      result[item[0]] = decodeURIComponent(item[1]);
+    });
+
+    return result;
+  }
+
+  private close() {
+    if (this.interval) {
+      window.clearInterval(this.interval);
+      this.interval = null;
+    }
+
+    this.popup.close();
+  }
+
+  private poll() {
+    this.interval = window.setInterval(() => {
+      try {
+        if (!this.popup || this.popup.closed !== false) {
+          this.close();
+          this.fail.emit(new Error("The popup was closed"));
+          return;
+        }
+
+        if (
+          this.popup.location.href === this.urlGithub ||
+          this.popup.location.pathname === "blank"
+        ) {
+          return;
+        }
+
+        this.completed.emit(
+          this.convertQueryParams(this.popup.location.search)
+        );
+        this.close();
+      } catch (error) {
+        this.fail.emit(error);
+      }
+    }, 500);
+  }
+
+  private onBtnClick() {
+    const urlParams = `client_id=${this.clientId}&scope=${this.scope}&redirect_uri=${this.redirectUri}&response_type=token`;
+
+    this.popup = window.open(
+      `${this.urlGithub}?${urlParams}`,
+      "spotify-authorization",
+      ""
+    );
+
+    this.poll();
+  }
+
+  render() {
+    return (
+      <button onClick={() => this.onBtnClick()}>
+        <slot></slot>
+      </button>
+    );
+  }
+}
