@@ -7,7 +7,102 @@
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
     />
     <title>Stencil Component Starter</title>
+    <style>
+      html,
+      body,
+      #root {
+        height: 100%;
+        margin: 0;
+        font-family: "Roboto", sans-serif;
+      }
 
+      body {
+        background-color: #24292e;
+      }
+
+      input,
+      button,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: inherit;
+        padding: 0.4em;
+        margin: 0 0 0.5em 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 2px;
+      }
+
+      button {
+        color: #333;
+        background-color: #f4f4f4;
+        outline: none;
+      }
+
+      button:disabled {
+        color: #999;
+      }
+
+      button:not(:disabled):active {
+        background-color: #ddd;
+      }
+
+      button:focus {
+        border-color: #666;
+      }
+
+      main {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      h1 {
+        color: white;
+        text-shadow: 1px 1px 2px black;
+        margin: 0;
+      }
+
+      h4 {
+        color: white;
+        margin: 10px 0px;
+      }
+
+      p {
+        color: white;
+        margin: 10px 0px;
+      }
+
+      input {
+        width: auto;
+        flex: 1;
+        margin-right: 15px;
+      }
+
+      .input-form {
+        width: 450px;
+        max-width: 100%;
+        padding: 20px;
+        display: inline-flex;
+        box-sizing: border-box;
+        margin-top: 40px;
+      }
+
+      .success {
+        color: #4caf50;
+      }
+
+      .failure {
+        color: #b71c1c;
+      }
+
+      .waiting {
+        color: #ffd600;
+      }
+    </style>
     <script type="module" src="/build/spotify-login.esm.js"></script>
     <script nomodule src="/build/spotify-login.js"></script>
     <script>
@@ -17,13 +112,24 @@
     </script>
   </head>
   <body>
-    <spotify-login
-      client-id="XXX"
-      scope="user-read-email"
-      redirect-uri="http://localhost:3333/"
-      oncompleted="onCompleted(this)"
-    >
-      Entrar
-    </spotify-login>
+    <main>
+      <h1>Svelte Github Login</h1>
+      <h4>Github Login Component to Svelte</h4>
+      <div class="input-form">
+        <input
+          id="clientId"
+          type="text"
+          placeholder="Client ID for GitHub OAuth application "
+        />
+        <spotify-login
+          client-id="XXX"
+          scope="user-read-email"
+          redirect-uri="http://localhost:3333/"
+          oncompleted="onCompleted(this)"
+        >
+          Entrar
+        </spotify-login>
+      </div>
+    </main>
   </body>
 </html>
