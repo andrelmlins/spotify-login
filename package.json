@@ -1,6 +1,6 @@
 {
   "name": "spotify-login",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Web Component for Spotify Login",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -10,6 +10,7 @@
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/spotify-login/spotify-login.js",
+  "homepage": "https://spotify-login.netlify.com/",
   "repository": "https://github.com/andrelmlins/spotify-login",
   "author": "André Lins <andrelucas01@hotmail.com> (https://andrelmlins.github.io/)",
   "files": [
