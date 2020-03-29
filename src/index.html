@@ -90,46 +90,56 @@
         box-sizing: border-box;
         margin-top: 40px;
       }
-
-      .success {
-        color: #4caf50;
-      }
-
-      .failure {
-        color: #b71c1c;
-      }
-
-      .waiting {
-        color: #ffd600;
-      }
     </style>
     <script type="module" src="/build/spotify-login.esm.js"></script>
     <script nomodule src="/build/spotify-login.js"></script>
-    <script>
-      function onCompleted(e) {
-        console.log(e);
-      }
-    </script>
   </head>
   <body>
     <main>
-      <h1>Svelte Github Login</h1>
-      <h4>Github Login Component to Svelte</h4>
+      <h1>Spotify Login</h1>
+      <h4>WebComponent</h4>
       <div class="input-form">
         <input
           id="clientId"
           type="text"
-          placeholder="Client ID for GitHub OAuth application "
+          placeholder="Client ID for Spotify OAuth application "
+        />
+        <input
+          id="redirectUri"
+          type="text"
+          placeholder="Redirect URI for Spotify OAuth application "
         />
         <spotify-login
-          client-id="XXX"
+          client-id=""
           scope="user-read-email"
-          redirect-uri="http://localhost:3333/"
+          redirect-uri=""
           oncompleted="onCompleted(this)"
         >
-          Entrar
+          Login
         </spotify-login>
       </div>
     </main>
+    <script>
+      const spotifyLoginElement = document.querySelector("spotify-login");
+      const clientIdInput = document.getElementById("clientId");
+      const redirectUri = document.getElementById("redirectUri");
+
+      clientIdInput.addEventListener("change", e => {
+        spotifyLoginElement.setAttribute("client-id", e.target.value);
+      });
+
+      redirectUri.addEventListener("change", e => {
+        spotifyLoginElement.setAttribute("redirect-uri", e.target.value);
+      });
+
+      spotifyLoginElement.addEventListener("completed", e => {
+        alert("Success");
+      });
+
+      spotifyLoginElement.addEventListener("fail", e => {
+        console.log(e);
+        alert("Error", "See the console");
+      });
+    </script>
   </body>
 </html>
