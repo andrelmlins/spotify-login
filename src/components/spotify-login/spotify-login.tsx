@@ -1,4 +1,12 @@
-import { Component, Prop, State, Event, EventEmitter, h } from "@stencil/core";
+import {
+  Element,
+  Component,
+  Prop,
+  State,
+  Event,
+  EventEmitter,
+  h
+} from "@stencil/core";
 
 @Component({
   tag: "spotify-login",
@@ -7,25 +15,32 @@ import { Component, Prop, State, Event, EventEmitter, h } from "@stencil/core";
 })
 export class SpotifyLogin {
   /**
-   * The first name
+   * Client ID for Spotify OAuth application
    */
   @Prop() clientId: string;
 
   /**
-   * The middle name
+   * Scope for Spotify OAuth application
    */
   @Prop() scope: string;
 
   /**
-   * The last name
+   * Registered redirect URI for Spotify OAuth application
    */
   @Prop() redirectUri: string;
 
+  /**
+   * Call with success
+   */
   @Event() completed: EventEmitter;
 
+  /**
+   * Call with error
+   */
   @Event() fail: EventEmitter;
 
-  @State() urlGithub: string = "https://accounts.spotify.com/authorize";
+  @Element() element: any;
+  @State() urlSpotify: string = "https://accounts.spotify.com/authorize";
   @State() popup: any;
   @State() interval: number = 0;
 
@@ -60,15 +75,13 @@ export class SpotifyLogin {
         }
 
         if (
-          this.popup.location.href === this.urlGithub ||
+          this.popup.location.href === this.urlSpotify ||
           this.popup.location.pathname === "blank"
         ) {
           return;
         }
 
-        this.completed.emit(
-          this.convertQueryParams(this.popup.location.search)
-        );
+        this.completed.emit(this.convertQueryParams(this.popup.location.hash));
         this.close();
       } catch (error) {
         this.fail.emit(error);
@@ -80,7 +93,7 @@ export class SpotifyLogin {
     const urlParams = `client_id=${this.clientId}&scope=${this.scope}&redirect_uri=${this.redirectUri}&response_type=token`;
 
     this.popup = window.open(
-      `${this.urlGithub}?${urlParams}`,
+      `${this.urlSpotify}?${urlParams}`,
       "spotify-authorization",
       ""
     );
