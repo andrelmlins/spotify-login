@@ -1,7 +1,7 @@
 {
   "name": "spotify-login",
-  "version": "0.0.1",
-  "description": "Stencil Component Starter",
+  "version": "0.1.0",
+  "description": "Web Component for Spotify Login",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "es2015": "dist/esm/index.mjs",
@@ -10,6 +10,8 @@
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/spotify-login/spotify-login.js",
+  "repository": "https://github.com/andrelmlins/spotify-login",
+  "author": "André Lins <andrelucas01@hotmail.com> (https://andrelmlins.github.io/)",
   "files": [
     "dist/",
     "loader/"
@@ -24,6 +26,14 @@
   "devDependencies": {
     "@types/jest": "^25.1.4",
     "@stencil/core": "^1.8.8"
+  },
+  "keywords": [
+    "spotify",
+    "login",
+    "web-component"
+  ],
+  "bugs": {
+    "url": "https://github.com/andrelmlins/spotify-login/issues"
   },
   "license": "MIT"
 }
