@@ -9,21 +9,23 @@
     <title>Stencil Component Starter</title>
     <style>
       html,
-      body,
-      #root {
+      body {
         height: 100%;
         margin: 0;
         font-family: "Roboto", sans-serif;
       }
 
       body {
-        background-color: #24292e;
+        background-color: #1db954;
+      }
+
+      .logo {
+        width: 170px;
+        height: auto;
       }
 
       input,
-      button,
-      select,
-      textarea {
+      button {
         font-family: inherit;
         font-size: inherit;
         padding: 0.4em;
@@ -62,18 +64,9 @@
 
       h1 {
         color: white;
+        font-size: 40px;
+        margin: 10px 0px;
         text-shadow: 1px 1px 2px black;
-        margin: 0;
-      }
-
-      h4 {
-        color: white;
-        margin: 10px 0px;
-      }
-
-      p {
-        color: white;
-        margin: 10px 0px;
       }
 
       input {
@@ -85,10 +78,23 @@
       .input-form {
         width: 450px;
         max-width: 100%;
-        padding: 20px;
         display: inline-flex;
         box-sizing: border-box;
-        margin-top: 40px;
+        margin-top: 80px;
+        margin-bottom: 50px;
+      }
+
+      code {
+        background-color: white;
+        padding: 15px;
+        border-radius: 4px;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px,
+          rgba(0, 0, 0, 0.14) 0px 1px 1px 0px,
+          rgba(0, 0, 0, 0.12) 0px 2px 1px -1px;
+      }
+
+      a {
+        text-decoration: none;
       }
     </style>
     <script type="module" src="/build/spotify-login.esm.js"></script>
@@ -96,8 +102,23 @@
   </head>
   <body>
     <main>
-      <h1>Spotify Login</h1>
-      <h4>WebComponent</h4>
+      <img
+        class="logo"
+        src="https://i.ya-webdesign.com/images/spotify-logo-white-png-4.png"
+      />
+      <h1>WebComponent for Spotify Login</h1>
+      <div>
+        <a href="https://github.com/andrelmlins/spotify-login">
+          <img
+            alt="GitHub stars"
+            src="https://img.shields.io/github/stars/andrelmlins/spotify-login?style=social"
+          />
+        </a>
+        <a href="https://www.npmjs.com/package/spotify-login">
+          <img alt="npm" src="https://img.shields.io/npm/v/spotify-login" />
+        </a>
+      </div>
+
       <div class="input-form">
         <input
           id="clientId"
@@ -109,15 +130,15 @@
           type="text"
           placeholder="Redirect URI for Spotify OAuth application "
         />
-        <spotify-login
-          client-id=""
-          scope="user-read-email"
-          redirect-uri=""
-          oncompleted="onCompleted(this)"
-        >
+        <spotify-login client-id="" scope="user-read-email" redirect-uri="">
           Login
         </spotify-login>
       </div>
+      <p style="color:white"><strong>Example:</strong></p>
+      <code>
+        &lt;spotify-login client-id="" scope="user-read-email"
+        redirect-uri=""&gt;Login&lt;/spotify-login&gt;
+      </code>
     </main>
     <script>
       const spotifyLoginElement = document.querySelector("spotify-login");
