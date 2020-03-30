@@ -46,10 +46,9 @@ An example of how to use the webcomponent with html:
 With JSX:
 
 ```jsx
-<spotify-login
-  onCompleted={e => console.log(e)}
-  onError={e => console.log(e)}
-/>
+<spotify-login onCompleted={e => console.log(e)} onError={e => console.log(e)}>
+  <button>Login with Spotify</button>
+</spotify-login>
 ```
 
 ## Properties
