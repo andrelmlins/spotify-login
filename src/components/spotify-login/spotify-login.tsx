@@ -5,7 +5,8 @@ import {
   State,
   Event,
   EventEmitter,
-  h
+  h,
+  Host
 } from "@stencil/core";
 
 @Component({
@@ -84,7 +85,7 @@ export class SpotifyLogin {
         this.completed.emit(this.convertQueryParams(this.popup.location.hash));
         this.close();
       } catch (error) {
-        this.fail.emit(error);
+        //this.fail.emit(error);
       }
     }, 500);
   }
@@ -103,9 +104,9 @@ export class SpotifyLogin {
 
   render() {
     return (
-      <button onClick={() => this.onBtnClick()}>
+      <Host onClick={() => this.onBtnClick()}>
         <slot></slot>
-      </button>
+      </Host>
     );
   }
 }

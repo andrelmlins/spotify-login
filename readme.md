@@ -27,7 +27,9 @@ An example of how to use the webcomponent with html:
   client-id="XXX"
   scope="user-read-email"
   redirect-uri="http://localhost:8000"
-></spotify-login>
+>
+  <button>Login with Spotify</button>
+</spotify-login>
 
 <script>
   const spotifyLoginElement = document.querySelector("spotify-login");
@@ -50,17 +52,20 @@ With JSX:
 />
 ```
 
-## Attributes:
+## Properties
 
-Attribute list:
+| Property      | Attribute      | Description                                           | Type     | Default     |
+| ------------- | -------------- | ----------------------------------------------------- | -------- | ----------- |
+| `clientId`    | `client-id`    | Client ID for Spotify OAuth application               | `string` | `undefined` |
+| `redirectUri` | `redirect-uri` | Registered redirect URI for Spotify OAuth application | `string` | `undefined` |
+| `scope`       | `scope`        | Scope for Spotify OAuth application                   | `string` | `undefined` |
 
-| Prop         | Type   | Description                                          |
-| ------------ | ------ | ---------------------------------------------------- |
-| client-id    | string | Client ID for GitHub OAuth application               |
-| scope        | string | Scope for GitHub OAuth application                   |
-| redirect-uri | string | Registered redirect URI for GitHub OAuth application |
-| success      | string | Call with success                                    |
-| fail         | string | Call with error                                      |
+## Events
+
+| Event       | Description       | Type               |
+| ----------- | ----------------- | ------------------ |
+| `completed` | Call with success | `CustomEvent<any>` |
+| `fail`      | Call with error   | `CustomEvent<any>` |
 
 ## NPM Statistics
 
