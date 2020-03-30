@@ -7,15 +7,16 @@
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
     />
     <title>WebComponent for Spotify Login</title>
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
+    />
     <style>
       html,
       body {
         height: 100%;
         margin: 0;
         font-family: "Roboto", sans-serif;
-      }
-
-      body {
         background-color: #1db954;
       }
 
@@ -26,27 +27,21 @@
 
       input,
       button {
+        width: 100%;
         font-family: inherit;
         font-size: inherit;
         padding: 0.4em;
-        margin: 0 0 0.5em 0;
+        margin: 0 0 8px 0 !important;
         box-sizing: border-box;
         border: 1px solid #ccc;
-        border-radius: 2px;
+        border-radius: 4px;
       }
 
       button {
+        flex: 1;
         color: #333;
         background-color: #f4f4f4;
         outline: none;
-      }
-
-      button:disabled {
-        color: #999;
-      }
-
-      button:not(:disabled):active {
-        background-color: #ddd;
       }
 
       button:focus {
@@ -83,20 +78,11 @@
       .input-form {
         width: 450px;
         max-width: 100%;
-        display: inline-flex;
+        display: flex;
         box-sizing: border-box;
-        margin-top: 80px;
-        margin-bottom: 50px;
-        flex-wrap: wrap;
-      }
-
-      code {
-        background-color: white;
-        padding: 15px;
-        border-radius: 4px;
-        box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px,
-          rgba(0, 0, 0, 0.14) 0px 1px 1px 0px,
-          rgba(0, 0, 0, 0.12) 0px 2px 1px -1px;
+        flex-direction: column;
+        margin-top: 70px;
+        margin-bottom: 40px;
       }
 
       a {
@@ -146,13 +132,18 @@
           <button>Login with Spotify</button>
         </spotify-login>
       </div>
-      <p style="color:white"><strong>Example:</strong></p>
-      <code>
-        &lt;spotify-login client-id="" scope="user-read-email"
-        redirect-uri=""&gt;Login&lt;/spotify-login&gt;
-      </code>
+      <p style="color:white;margin:0"><strong>Example:</strong></p>
+      <pre>
+        <code class="html">
+&lt;spotify-login client-id="XXX" scope="user-read-email" redirect-uri="http://localhost:8000"&gt;
+  &lt;button&gt;Login with Spotify&lt;/button&gt;
+&lt;/spotify-login&gt;
+        </code>
+      </pre>
     </main>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
     <script>
+      hljs.initHighlightingOnLoad();
       const spotifyLoginElement = document.querySelector("spotify-login");
       const clientIdInput = document.getElementById("clientId");
       const redirectUri = document.getElementById("redirectUri");
