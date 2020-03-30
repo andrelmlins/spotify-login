@@ -1,130 +1,108 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-  <title>WebComponent for Spotify Login</title>
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css" />
-  <style>
-    html,
-    body {
-      height: 100%;
-      margin: 0;
-      font-family: "Roboto", sans-serif;
-      background-color: #1db954;
-    }
-
-    input,
-    button {
-      width: 100%;
-      font-family: inherit;
-      font-size: inherit;
-      padding: 0.4em;
-      margin: 0 0 8px 0;
-      box-sizing: border-box;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    button {
-      flex: 1;
-      color: #333;
-      background-color: #f4f4f4;
-    }
-
-    button:hover {
-      cursor: pointer;
-    }
-
-    main {
-      display: flex;
-      width: 100%;
-      height: 100%;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
-
-    h1 {
-      color: white;
-      font-size: 40px;
-      margin: 10px 0px;
-      text-shadow: 1px 1px 2px black;
-      text-align: center;
-    }
-
-    .input-form {
-      width: 450px;
-      max-width: 100%;
-      display: flex;
-      box-sizing: border-box;
-      flex-direction: column;
-      margin-top: 70px;
-      margin-bottom: 40px;
-    }
-
-    a {
-      text-decoration: none;
-    }
-
-    @media screen and (max-width: 800px) {
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>WebComponent for Spotify Login</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css" />
+    <style>
+      html,
       body {
-        padding: 20px;
+        height: 100%;
+        margin: 0;
+        font-family: "Roboto", sans-serif;
+        background-color: #1db954;
       }
-    }
-  </style>
-  <script type="module" src="/build/spotify-login.esm.js"></script>
-  <script nomodule src="/build/spotify-login.js"></script>
-</head>
+      input,
+      button {
+        width: 100%;
+        font-family: inherit;
+        font-size: inherit;
+        padding: 0.4em;
+        margin: 0 0 8px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      button { flex: 1; color: #333; background-color: #f4f4f4;}
+      button:hover { cursor: pointer; }
+      a { text-decoration: none; }
+      main {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      h1 {
+        color: white;
+        font-size: 40px;
+        margin: 10px 0px;
+        text-shadow: 1px 1px 2px black;
+        text-align: center;
+      }
+      .input-form {
+        width: 450px;
+        max-width: 100%;
+        display: flex;
+        box-sizing: border-box;
+        flex-direction: column;
+        margin-top: 70px;
+        margin-bottom: 40px;
+      }
+      @media screen and (max-width: 800px) { body { padding: 20px; } }
+    </style>
+    <script type="module" src="/build/spotify-login.esm.js"></script>
+    <script nomodule src="/build/spotify-login.js"></script>
+  </head>
 
-<body>
-  <main>
-    <img style="width: 170px;height: auto;" src="https://i.ya-webdesign.com/images/spotify-logo-white-png-4.png" />
-    <h1>WebComponent for Spotify Login</h1>
-    <div>
-      <a href="https://github.com/andrelmlins/spotify-login">
-        <img alt="GitHub stars" src="https://img.shields.io/github/stars/andrelmlins/spotify-login?style=social" />
-      </a>
-      <a href="https://www.npmjs.com/package/spotify-login">
-        <img alt="npm" src="https://img.shields.io/npm/v/spotify-login" />
-      </a>
-    </div>
-    <div class="input-form">
-      <input id="clientId" type="text" placeholder="Client ID for Spotify OAuth application " />
-      <input id="redirectUri" type="text" placeholder="Redirect URI for Spotify OAuth application " />
-      <spotify-login client-id="" scope="user-read-email" redirect-uri="">
-        <button>Login with Spotify</button>
-      </spotify-login>
-    </div>
-    <p style="color:white;margin:0"><strong>Example:</strong></p>
-    <pre>
-      <code class="html">
-&lt;spotify-login client-id="XXX" scope="user-read-email" redirect-uri="http://localhost:8000"&gt;
-  &lt;button&gt;Login with Spotify&lt;/button&gt;
-&lt;/spotify-login&gt;
-      </code>
-    </pre>
-  </main>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
-  <script>
-    hljs.initHighlightingOnLoad();
-    const spotifyLoginElement = document.querySelector("spotify-login");
-    const clientIdInput = document.getElementById("clientId");
-    const redirectUri = document.getElementById("redirectUri");
+  <body>
+    <main>
+      <img style="width: 170px;height: auto;" src="https://i.ya-webdesign.com/images/spotify-logo-white-png-4.png" />
+      <h1>WebComponent for Spotify Login</h1>
+      <div>
+        <a href="https://github.com/andrelmlins/spotify-login">
+          <img alt="GitHub stars" src="https://img.shields.io/github/stars/andrelmlins/spotify-login?style=social" />
+        </a>
+        <a href="https://www.npmjs.com/package/spotify-login">
+          <img alt="npm" src="https://img.shields.io/npm/v/spotify-login" />
+        </a>
+      </div>
+      <div class="input-form">
+        <input id="clientId" type="text" placeholder="Client ID for Spotify OAuth application " />
+        <input id="redirectUri" type="text" placeholder="Redirect URI for Spotify OAuth application " />
+        <spotify-login client-id="" scope="user-read-email" redirect-uri="">
+          <button>Login with Spotify</button>
+        </spotify-login>
+      </div>
+      <p style="color:white;margin:0"><strong>Example:</strong></p>
+      <pre>
+        <code class="html">
+  &lt;spotify-login client-id="XXX" scope="user-read-email" redirect-uri="http://localhost:8000"&gt;
+    &lt;button&gt;Login with Spotify&lt;/button&gt;
+  &lt;/spotify-login&gt;
+        </code>
+      </pre>
+    </main>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+      const spotifyLoginElement = document.querySelector("spotify-login");
+      const clientIdInput = document.getElementById("clientId");
+      const redirectUri = document.getElementById("redirectUri");
 
-    clientIdInput.addEventListener("change", e =>
-      spotifyLoginElement.setAttribute("client-id", e.target.value)
-    );
-    redirectUri.addEventListener("change", e =>
-      spotifyLoginElement.setAttribute("redirect-uri", e.target.value)
-    );
-    spotifyLoginElement.addEventListener("completed", e => alert("Success"));
-    spotifyLoginElement.addEventListener("fail", e => {
-      console.log(e);
-      alert("Error", "See the console");
-    });
-  </script>
-</body>
-
+      clientIdInput.addEventListener("change", e =>
+        spotifyLoginElement.setAttribute("client-id", e.target.value)
+      );
+      redirectUri.addEventListener("change", e =>
+        spotifyLoginElement.setAttribute("redirect-uri", e.target.value)
+      );
+      spotifyLoginElement.addEventListener("completed", e => alert("Success"));
+      spotifyLoginElement.addEventListener("fail", e => {
+        console.log(e);
+        alert("Error", "See the console");
+      });
+    </script>
+  </body>
 </html>
