@@ -1,6 +1,6 @@
 {
   "name": "spotify-login",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Web Component for Spotify Login",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
