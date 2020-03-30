@@ -16,11 +16,11 @@ export namespace Components {
          */
         "redirectUri": string;
         /**
-          * Scope for Spotify OAuth application
+          * Grant type the application wants to use
          */
         "responseType": string;
         /**
-          * Scope for Spotify OAuth application
+          * A space-delimited list of permissions that the application requires
          */
         "scope": string;
         /**
@@ -67,11 +67,11 @@ declare namespace LocalJSX {
          */
         "redirectUri"?: string;
         /**
-          * Scope for Spotify OAuth application
+          * Grant type the application wants to use
          */
         "responseType"?: string;
         /**
-          * Scope for Spotify OAuth application
+          * A space-delimited list of permissions that the application requires
          */
         "scope"?: string;
         /**

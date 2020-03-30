@@ -26,12 +26,12 @@ export class SpotifyLogin {
   @Prop() redirectUri: string;
 
   /**
-   * Scope for Spotify OAuth application
+   * Grant type the application wants to use
    */
   @Prop() responseType: string = "token";
 
   /**
-   * Scope for Spotify OAuth application
+   * A space-delimited list of permissions that the application requires
    */
   @Prop() scope: string;
 
