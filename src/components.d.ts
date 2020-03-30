@@ -12,7 +12,7 @@ export namespace Components {
          */
         "clientId": string;
         /**
-          * Registered redirect URI for Spotify OAuth application
+          * The URI to redirect to after the user grants or denies permission.
          */
         "redirectUri": string;
         /**
@@ -23,6 +23,14 @@ export namespace Components {
           * Scope for Spotify OAuth application
          */
         "scope": string;
+        /**
+          * Whether or not to force the user to approve the app again if they’ve already done so.
+         */
+        "showDialog": boolean;
+        /**
+          * The state can be useful for correlating requests and responses
+         */
+        "state": string;
     }
 }
 declare global {
@@ -55,7 +63,7 @@ declare namespace LocalJSX {
          */
         "onRequest"?: (event: CustomEvent<any>) => void;
         /**
-          * Registered redirect URI for Spotify OAuth application
+          * The URI to redirect to after the user grants or denies permission.
          */
         "redirectUri"?: string;
         /**
@@ -66,6 +74,14 @@ declare namespace LocalJSX {
           * Scope for Spotify OAuth application
          */
         "scope"?: string;
+        /**
+          * Whether or not to force the user to approve the app again if they’ve already done so.
+         */
+        "showDialog"?: boolean;
+        /**
+          * The state can be useful for correlating requests and responses
+         */
+        "state"?: string;
     }
     interface IntrinsicElements {
         "spotify-login": SpotifyLogin;

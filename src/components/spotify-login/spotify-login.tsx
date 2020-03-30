@@ -25,7 +25,7 @@ export class SpotifyLogin {
   @Prop() scope: string;
 
   /**
-   * Registered redirect URI for Spotify OAuth application
+   * 	The URI to redirect to after the user grants or denies permission.
    */
   @Prop() redirectUri: string;
 
@@ -33,6 +33,16 @@ export class SpotifyLogin {
    * Scope for Spotify OAuth application
    */
   @Prop() responseType: string = "token";
+
+  /**
+   * The state can be useful for correlating requests and responses
+   */
+  @Prop() state: string;
+
+  /**
+   * Whether or not to force the user to approve the app again if they’ve already done so.
+   */
+  @Prop() showDialog: boolean;
 
   /**
    * Call with request
@@ -99,7 +109,19 @@ export class SpotifyLogin {
   }
 
   private onBtnClick() {
-    const urlParams = `client_id=${this.clientId}&scope=${this.scope}&redirect_uri=${this.redirectUri}&response_type=${this.responseType}`;
+    let urlParams = `client_id=${this.clientId}&redirect_uri=${this.redirectUri}&response_type=${this.responseType}`;
+
+    if (this.scope) {
+      urlParams += `&scope=${this.scope}`;
+    }
+
+    if (this.state) {
+      urlParams += `&state=${this.state}`;
+    }
+
+    if (this.showDialog) {
+      urlParams += `&show_dialog=${this.showDialog}`;
+    }
 
     this.popup = window.open(
       `${this.urlSpotify}?${urlParams}`,
