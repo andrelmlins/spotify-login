@@ -1,5 +1,6 @@
 import {
   Component,
+  Watch,
   Prop,
   State,
   Event,
@@ -20,11 +21,6 @@ export class SpotifyLogin {
   @Prop() clientId: string;
 
   /**
-   * Scope for Spotify OAuth application
-   */
-  @Prop() scope: string;
-
-  /**
    * 	The URI to redirect to after the user grants or denies permission.
    */
   @Prop() redirectUri: string;
@@ -33,6 +29,11 @@ export class SpotifyLogin {
    * Scope for Spotify OAuth application
    */
   @Prop() responseType: string = "token";
+
+  /**
+   * Scope for Spotify OAuth application
+   */
+  @Prop() scope: string;
 
   /**
    * The state can be useful for correlating requests and responses
@@ -58,6 +59,27 @@ export class SpotifyLogin {
    * Call with error
    */
   @Event() fail: EventEmitter;
+
+  @Watch("clientId")
+  validateClientId(newValue: string) {
+    if (!newValue) {
+      throw new Error("clientId: required");
+    }
+  }
+
+  @Watch("redirectUri")
+  validateRedirectUri(newValue: string) {
+    if (!newValue) {
+      throw new Error("redirectUri: required");
+    }
+  }
+
+  @Watch("responseType")
+  validateResponseType(newValue: string) {
+    if (!newValue) {
+      throw new Error("responseType: required");
+    }
+  }
 
   @State() urlSpotify: string = "https://accounts.spotify.com/authorize";
   @State() popup: any;
