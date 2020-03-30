@@ -7,11 +7,12 @@ Web Component for Spotify Login
 
 ## Properties
 
-| Property      | Attribute      | Description                                           | Type     | Default     |
-| ------------- | -------------- | ----------------------------------------------------- | -------- | ----------- |
-| `clientId`    | `client-id`    | Client ID for Spotify OAuth application               | `string` | `undefined` |
-| `redirectUri` | `redirect-uri` | Registered redirect URI for Spotify OAuth application | `string` | `undefined` |
-| `scope`       | `scope`        | Scope for Spotify OAuth application                   | `string` | `undefined` |
+| Property       | Attribute       | Description                                           | Type     | Default     |
+| -------------- | --------------- | ----------------------------------------------------- | -------- | ----------- |
+| `clientId`     | `client-id`     | Client ID for Spotify OAuth application               | `string` | `undefined` |
+| `redirectUri`  | `redirect-uri`  | Registered redirect URI for Spotify OAuth application | `string` | `undefined` |
+| `responseType` | `response-type` | Scope for Spotify OAuth application                   | `string` | `"token"`   |
+| `scope`        | `scope`         | Scope for Spotify OAuth application                   | `string` | `undefined` |
 
 
 ## Events
@@ -20,6 +21,7 @@ Web Component for Spotify Login
 | ----------- | ----------------- | ------------------ |
 | `completed` | Call with success | `CustomEvent<any>` |
 | `fail`      | Call with error   | `CustomEvent<any>` |
+| `request`   | Call with request | `CustomEvent<any>` |
 
 
 ----------------------------------------------

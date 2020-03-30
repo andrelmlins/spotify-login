@@ -1,5 +1,4 @@
 import {
-  Element,
   Component,
   Prop,
   State,
@@ -31,6 +30,16 @@ export class SpotifyLogin {
   @Prop() redirectUri: string;
 
   /**
+   * Scope for Spotify OAuth application
+   */
+  @Prop() responseType: string = "token";
+
+  /**
+   * Call with request
+   */
+  @Event() request: EventEmitter;
+
+  /**
    * Call with success
    */
   @Event() completed: EventEmitter;
@@ -40,7 +49,6 @@ export class SpotifyLogin {
    */
   @Event() fail: EventEmitter;
 
-  @Element() element: any;
   @State() urlSpotify: string = "https://accounts.spotify.com/authorize";
   @State() popup: any;
   @State() interval: number = 0;
@@ -91,7 +99,7 @@ export class SpotifyLogin {
   }
 
   private onBtnClick() {
-    const urlParams = `client_id=${this.clientId}&scope=${this.scope}&redirect_uri=${this.redirectUri}&response_type=token`;
+    const urlParams = `client_id=${this.clientId}&scope=${this.scope}&redirect_uri=${this.redirectUri}&response_type=${this.responseType}`;
 
     this.popup = window.open(
       `${this.urlSpotify}?${urlParams}`,
@@ -99,6 +107,7 @@ export class SpotifyLogin {
       ""
     );
 
+    this.request.emit();
     this.poll();
   }
 

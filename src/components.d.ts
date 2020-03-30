@@ -18,6 +18,10 @@ export namespace Components {
         /**
           * Scope for Spotify OAuth application
          */
+        "responseType": string;
+        /**
+          * Scope for Spotify OAuth application
+         */
         "scope": string;
     }
 }
@@ -47,9 +51,17 @@ declare namespace LocalJSX {
          */
         "onFail"?: (event: CustomEvent<any>) => void;
         /**
+          * Call with request
+         */
+        "onRequest"?: (event: CustomEvent<any>) => void;
+        /**
           * Registered redirect URI for Spotify OAuth application
          */
         "redirectUri"?: string;
+        /**
+          * Scope for Spotify OAuth application
+         */
+        "responseType"?: string;
         /**
           * Scope for Spotify OAuth application
          */
